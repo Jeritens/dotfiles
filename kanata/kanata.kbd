@@ -1,0 +1,162 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer base
+  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
+  tab  q    (chord mtl w)    (chord mtl e)    @rm  t    y    @um  (chord mtr i)    (chord mtr o)    (chord mtr p)    [    ]    \
+  bspc @am   (chord mbl s) (chord mbl d) @fm   g    h    @jm  (chord mbr k)  (chord mbr l)  @;m   '    ret
+  lsft z    x    c    @vm  b    n    @mm    ,     .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer base-alt
+  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
+  tab  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    [    ]    \
+  bspc  a   (chord mbl-alt s) (chord mbl-alt d) f   g    h    j  (chord mbr-alt k)  (chord mbr-alt l)  ;   '    ret
+  lsft @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    rsft
+  lctl lmet @num           spc            @num rmet rctl
+)
+
+(deflayer hard-mode
+  XX  XX    XX    XX    XX    XX    XX    XX    XX  XX    XX    XX    @=la    XX
+  XX  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    grv    XX    XX
+  XX  a   (chord mbl-alt s) (chord mbl-alt d) f   g    h    j  (chord mbr-alt k)  (chord mbr-alt l)  ;   '    XX
+  XX @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    XX
+  XX lmet @num           spc            @num XX XX
+)
+
+(deflayer nomod
+ grv  1    2    3    4    5    6    7    8    9    0    -    @=la   bspc
+ tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+ bspc a    s    d    f    g    h    j    k    l    ;    '    ret
+ lsft z    x    c    v    b    n    m    ,    .    /    rsft
+ lctl lmet lalt           spc            ralt rmet rctl
+ )
+
+(deflayer numbers
+  _  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10    f11    f12    _
+  _  1    2    3    4    5    6    7    8    9    0    grv    _    _
+  _ S-[  S-]  S-9  S-0  S-4    S-1  @=    @+  S-8    -    S--    _
+  _ S-2  S-3  [    ]    S-grv    S-\   S-7  S-5    S-6    \    _
+  _ _ _           spc            _ _ _
+)
+
+(deflayer navigation
+ _    _    _    _    _    _    _    _     _   _    _    _    _    _
+ _    RA-s    _    _    _    _    _   RA-y      _   RA-p    _    _    _    _
+ _   RA-q C-s  _  esc    tab  left down up rght   _    _    _
+ _    C-z    C-x    C-c    C-v    _    _   ret  bspc del    _    _
+ _    _    _              spc              _    _    _ 
+)
+
+(deflayer layers
+ _  @layb @layn @laya @layh    _    _    _     _   _    _    _    _    _
+ _    _    _    _    _    _    _    _     _   _    _    _    _    _
+ _    _    _    _    _    _    _    _     _   _    _    _    _
+ _    _    _    _    _    _    _   _  _ _    _    _
+ _    _    _              _              _    _    _ 
+)
+
+(deftemplate charmod (char mod)
+ (switch
+  ((key-timing $streak-count less-than $streak-time)) $char break
+  () (tap-hold-release $tap-time $hold-time-slow $char $mod) break
+ )
+)
+
+(deftemplate charmod-raw (car mod)
+  (tap-hold-release-timeout $tap-time $hold-time-slow $car $mod $car)
+)
+
+(defvar 
+  tap-time 150
+  hold-time 200
+  hold-time-slow 300
+  chord-timeout 30
+  streak-count 3
+  streak-time 300
+)
+
+(defalias 
+  = (on-press tap-vkey equal)
+  + (on-press tap-vkey plus)
+  num (layer-toggle numbers)
+  nav (layer-toggle navigation)
+  lay (layer-toggle layers)
+  layb (layer-switch base)
+  laya (layer-switch base-alt)
+  layn (layer-switch nomod)
+  layh (layer-switch hard-mode)
+
+  am (t! charmod-raw a lalt)
+  sm (t! charmod-raw s lctl)
+  dm (t! charmod-raw d lsft)
+  fm (t! charmod-raw f @num)
+  vm (t! charmod-raw v @nav)
+  rm (t! charmod-raw r lmet)
+  ;m (t! charmod-raw ; lalt)
+  lm (t! charmod-raw l lctl)
+  km (t! charmod-raw k lsft)
+  jm (t! charmod-raw j @num)
+  mm (t! charmod-raw m @nav)
+  um (t! charmod-raw u lmet)
+  =la (t! charmod = @lay)
+
+  zm (t! charmod-raw z lalt)
+  xm (t! charmod-raw x lctl)
+  cm (t! charmod-raw c lsft)
+  ,m (t! charmod-raw , rsft)
+  .m (t! charmod-raw . rctl)
+  /m (t! charmod-raw / lalt)
+)
+
+(defvirtualkeys 
+  equal =
+  plus S-=
+)
+(defchords mtl $chord-timeout
+  (w  ) w
+  (  e) e
+  (w e) esc
+)
+
+(defchords mtr $chord-timeout
+  (i  ) i
+  (  o) o
+  (     p) p
+  (i o) bspc
+  (  o  p) del
+)
+
+(defchords mbl $chord-timeout
+  (s  ) @sm 
+  (  d) @dm
+  (s d) tab
+)
+
+(defchords mbl-alt $chord-timeout
+  (s  ) s 
+  (  d) d
+  (s d) tab
+)
+
+(defchords mbr $chord-timeout
+  (k  ) @km
+  (  l) @lm 
+  (k l) ret
+)
+
+(defchords mbr-alt $chord-timeout
+  (k  ) k
+  (  l) l 
+  (k l) ret
+)
