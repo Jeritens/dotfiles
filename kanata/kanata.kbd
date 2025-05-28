@@ -11,27 +11,11 @@
 )
 
 (deflayer base
-  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
-  tab  q    (chord mtl w)    (chord mtl e)    @rm  t    y    @um  (chord mtr i)    (chord mtr o)    (chord mtr p)    [    ]    \
-  bspc @am   (chord mbl s) (chord mbl d) @fm   g    h    @jm  (chord mbr k)  (chord mbr l)  @;m   '    ret
-  lsft z    x    c    @vm  b    n    @mm    ,     .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
-)
-
-(deflayer base-alt
-  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
-  tab  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    [    ]    \
-  bspc  a   (chord mbl-alt s) (chord mbl-alt d) f   g    h    j  (chord mbr-alt k)  (chord mbr-alt l)  ;   '    ret
-  lsft @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    rsft
-  lctl lmet @num           spc            @num rmet rctl
-)
-
-(deflayer hard-mode
-  XX  XX    XX    XX    XX    XX    XX    XX    XX  XX    XX    XX    @=la    XX
-  XX  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    grv    XX    XX
-  XX  a   (chord mbl-alt s) (chord mbl-alt d) f   g    h    j  (chord mbr-alt k)  (chord mbr-alt l)  ;   '    XX
-  XX @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    XX
-  XX lmet @num           spc            @num XX XX
+ grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
+ tab  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    grv    ]    \
+ bspc  a   (chord mbl s) (chord mbl d) f   g    h    j  (chord mbr k)  (chord mbr l)  ;   '    ret
+ lsft @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    rsft
+ lctl lmet @num-tab           spc            @num rmet lalt
 )
 
 (deflayer nomod
@@ -40,13 +24,29 @@
  bspc a    s    d    f    g    h    j    k    l    ;    '    ret
  lsft z    x    c    v    b    n    m    ,    .    /    rsft
  lctl lmet lalt           spc            ralt rmet rctl
- )
+)
+
+(deflayer base-less
+  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
+  tab  q    w    e    r  t    y    u  i    o    p    grv    ]    \
+  bspc  a   s d f   g    h    j  k  l  ;   '    ret
+  lsft @zm    x    c    @vm  b    n    @mm    ,     .    @/m    rsft
+  lctl lmet @num-tab           spc            @num rmet lalt
+)
+
+(deflayer hard-mode
+  XX  XX    XX    XX    XX    XX    XX    XX    XX  XX    XX    XX    @=la    XX
+  XX  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    grv    XX    XX
+  XX  a   (chord mbl s) (chord mbl d) f   g    h    j  (chord mbr k)  (chord mbr l)  ;   '    XX
+  XX @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    XX
+  XX lmet @num-tab           spc            @num XX XX
+)
 
 (deflayer numbers
-  _  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10    f11    f12    _
-  _  1    2    3    4    5    6    7    8    9    0    grv    _    _
-  _ S-[  S-]  S-9  S-0  S-4    S-1  @=    @+  S-8    -    S--    _
-  _ S-2  S-3  [    ]    S-grv    S-\   S-7  S-5    S-6    \    _
+  _  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10    f11    f12    del
+  @tab-num  1    2    3    4    5    6    7    8    9    0    grv    _    _
+  _  @{  @} S-9  S-0  S-4    S-1  @=    @+  S-8    -    S--    _
+  _ S-2  S-3  @[    @]    S-grv    S-\   S-7  S-5    S-6    \    _
   _ _ _           spc            _ _ _
 )
 
@@ -59,7 +59,7 @@
 )
 
 (deflayer layers
- _  @layb @layn @laya @layh    _    _    _     _   _    _    _    _    _
+ _  @layb @layh @layl @layn    _    _    _     _   _    _    _    _    @layn
  _    _    _    _    _    _    _    _     _   _    _    _    _    _
  _    _    _    _    _    _    _    _     _   _    _    _    _
  _    _    _    _    _    _    _   _  _ _    _    _
@@ -86,30 +86,49 @@
   streak-time 300
 )
 
+(defvirtualkeys 
+  equal =
+  plus S-=
+  squirly_o S-[
+  squirly_c S-]
+  bracket_o [
+  bracket_c ]
+  alt lalt
+)
+
 (defalias 
-  = (on-press tap-vkey equal)
-  + (on-press tap-vkey plus)
-  num (layer-toggle numbers)
-  nav (layer-toggle navigation)
-  lay (layer-toggle layers)
-  layb (layer-switch base)
-  laya (layer-switch base-alt)
-  layn (layer-switch nomod)
-  layh (layer-switch hard-mode)
+    num (layer-toggle numbers)
+    nav (layer-toggle navigation)
+    lay (layer-toggle layers)
+    layb (layer-switch base)
+    layl (layer-switch base-less)
+    layh (layer-switch hard-mode)
+    layn (layer-switch nomod)
+    =la (t! charmod = @lay)
+
+    ;;virtual keys
+    = (on-press tap-vkey equal)
+    + (on-press tap-vkey plus)
+    { (on-press tap-vkey squirly_o)
+    } (on-press tap-vkey squirly_c)
+    [ (on-press tap-vkey bracket_o)
+    ] (on-press tap-vkey bracket_c)
+    tab-num (macro (on-press press-vkey alt) 1 tab)
+    num-tab (multi (on-release release-vkey alt) @num)
+
+    vm (t! charmod-raw v @nav)
+    mm (t! charmod-raw m @nav)
 
   am (t! charmod-raw a lalt)
-  sm (t! charmod-raw s lctl)
-  dm (t! charmod-raw d lsft)
-  fm (t! charmod-raw f @num)
-  vm (t! charmod-raw v @nav)
-  rm (t! charmod-raw r lmet)
   ;m (t! charmod-raw ; lalt)
+  sm (t! charmod-raw s lctl)
   lm (t! charmod-raw l lctl)
+  dm (t! charmod-raw d lsft)
   km (t! charmod-raw k lsft)
-  jm (t! charmod-raw j @num)
-  mm (t! charmod-raw m @nav)
+  rm (t! charmod-raw r lmet)
   um (t! charmod-raw u lmet)
-  =la (t! charmod = @lay)
+  fm (t! charmod-raw f @num)
+  jm (t! charmod-raw j @num)
 
   zm (t! charmod-raw z lalt)
   xm (t! charmod-raw x lctl)
@@ -119,10 +138,6 @@
   /m (t! charmod-raw / lalt)
 )
 
-(defvirtualkeys 
-  equal =
-  plus S-=
-)
 (defchords mtl $chord-timeout
   (w  ) w
   (  e) e
@@ -138,24 +153,12 @@
 )
 
 (defchords mbl $chord-timeout
-  (s  ) @sm 
-  (  d) @dm
-  (s d) tab
-)
-
-(defchords mbl-alt $chord-timeout
   (s  ) s 
   (  d) d
   (s d) tab
 )
 
 (defchords mbr $chord-timeout
-  (k  ) @km
-  (  l) @lm 
-  (k l) ret
-)
-
-(defchords mbr-alt $chord-timeout
   (k  ) k
   (  l) l 
   (k l) ret
