@@ -12,7 +12,7 @@
 
 (deflayer base
  grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
- tab  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    grv    ]    \
+ tab  q    (chord mtl w)    (chord mtl e)    r  t    y    u  (chord mtr i)    (chord mtr o)    (chord mtr p)    [    ]    \
  bspc  a   (chord mbl s) (chord mbl d) f   g    h    j  (chord mbr k)  (chord mbr l)  ;   '    ret
  lsft @zm    @xm    @cm    @vm  b    n    @mm    @,m     @.m    @/m    rsft
  lctl lmet @num-tab           spc            @num rmet lalt
@@ -28,7 +28,7 @@
 
 (deflayer base-less
   grv  1    2    3    4    5    6    7    8    9    0    -    @=la    bspc
-  tab  q    w    e    r  t    y    u  i    o    p    grv    ]    \
+  tab  q    w    e    r  t    y    u  i    o    p    [    ]    \
   bspc  a   s d f   g    h    j  k  l  ;   '    ret
   lsft @zm    x    c    @vm  b    n    @mm    ,     .    @/m    rsft
   lctl lmet @num-tab           spc            @num rmet lalt
@@ -47,15 +47,23 @@
   @tab-num  1    2    3    4    5    6    7    8    9    0    grv    _    _
   _  @{  @} S-9  S-0  S-4    S-1  @=    @+  S-8    -    S--    _
   _ S-2  S-3  @[    @]    S-grv    S-\   S-7  S-5    S-6    \    _
-  _ _ _           spc            _ _ _
+  _ @mou  _          spc           _  _ _
 )
 
 (deflayer navigation
- _    _    _    _    _    _    _    _     _   _    _    _    _    _
+ _    M-1    M-2    M-3    M-4    M-5    M-6    M-7     M-8   M-9    M-0    _    _    _
  _    RA-s    _    _    _    _    _   RA-y      _   RA-p    _    _    _    _
  _   RA-q C-s  _  esc    tab  left down up rght   _    _    _
  _    C-z    C-x    C-c    C-v    _    _   ret  bspc del    _    _
  _    _    _              spc              _    _    _ 
+)
+
+(deflayer mouse
+ _  @layb @layh @layl @layn    _    _    _     _   _    _    _    _    @layb
+ _    _    _    _    _    _    _   mlft      mmid   mrgt   _    _    _    _
+ _    _   @mouse-slw    @mouse-nor    @mouse-fst        _   @mousl     @mousd   @mousu   @mousr  _   _    _
+ _    _    _    _    _    _    _   _     _     _    _    _
+ _    _    @layb              mlft              @layb    _    _ 
 )
 
 (deflayer layers
@@ -98,6 +106,7 @@
 
 (defalias 
     num (layer-toggle numbers)
+    mou (layer-switch mouse)
     nav (layer-toggle navigation)
     lay (layer-toggle layers)
     layb (layer-switch base)
@@ -136,6 +145,19 @@
   ,m (t! charmod-raw , rsft)
   .m (t! charmod-raw . rctl)
   /m (t! charmod-raw / lalt)
+
+  mouse-fst (movemouse-speed 300)
+  mouse-nor (movemouse-speed 50)
+  mouse-slw (movemouse-speed 10)
+
+  mousu (movemouse-up 4 6)
+  mousd (movemouse-down 4 6)
+  mousl (movemouse-left 4 6)
+  mousr (movemouse-right 4 6)
+
+  mcl (tap-hold 0 $tap-time mlft mltp)
+  mcm (tap-hold 0 $tap-time mmid mmtp)
+  mcr (tap-hold 0 $tap-time mrgt mrtp)
 )
 
 (defchords mtl $chord-timeout

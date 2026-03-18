@@ -1,0 +1,36 @@
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		main = "nvim-treesitter.configs",
+		opts = {
+			ensure_installed = {
+				"lua",
+				"luadoc",
+				"vim",
+				"vimdoc",
+				"diff",
+				"markdown",
+				"markdown_inline",
+				"html",
+				"yaml",
+				"json",
+				"gdscript",
+				"java",
+				"javascript",
+				"typescript",
+				"godot_resource",
+				"gdscript",
+				"gdshader",
+			},
+			auto_install = true,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = { "ruby" },
+			},
+			indent = { enable = true, disable = { "ruby" } },
+		},
+	},
+}
