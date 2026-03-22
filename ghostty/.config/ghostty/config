@@ -4,15 +4,16 @@
 #fonts
 #font-family = Iosevka
 
-#font-family = JetBrainsMono
-#font-size = 13
-#font-feature = zero, -calt, -liga, -dlig
+# font-family = JetBrainsMono Nerd Font
+# font-size = 13
+# font-feature = zero, -calt, -liga, -dlig
 
 font-family = "GohuFont 14 Nerd Font Mono"
 font-size = 14
+freetype-load-flags = hinting, no-autohint
 
-#font-family = "Terminess Nerd Font Mono"
-#font-size = 14
+# font-family = "Terminess Nerd Font Mono"
+# font-size = 14
 
 #font-family = "DepartureMono Nerd Font"
 
@@ -23,11 +24,12 @@ font-size = 14
 window-decoration = server
 gtk-titlebar = true
 #theme = "nord"
-#theme = "Dark+"
-theme = "Everforest Dark - Hard"
+# theme = "Dark+"
+theme = "Everforest Dark Hard"
 #cursor-color = a7c080
 cursor-color = DDFFDD
-background-opacity = 1
+# background-opacity = 0.9
+background-opacity = 0.8
 unfocused-split-opacity = 1
 
 #shaders
@@ -55,5 +57,4 @@ keybind = ctrl+a>p=previous_tab
 
 #setting
 window-save-state = always
-
 
