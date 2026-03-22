@@ -46,5 +46,3 @@ end
 vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
     callback = setup_godot_server,
 })
-
-require("chess-viewer").setup()

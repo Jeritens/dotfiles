@@ -1,3 +1,3 @@
 return {
-    dir = "~/dev/chess-viewer.nvim",
+    -- dir = "~/dev/chess-viewer.nvim",
 }
