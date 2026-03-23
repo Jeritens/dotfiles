@@ -8,9 +8,9 @@
 # font-size = 13
 # font-feature = zero, -calt, -liga, -dlig
 
-font-family = "GohuFont 14 Nerd Font Mono"
-font-size = 14
-freetype-load-flags = hinting, no-autohint
+font-family = "GohuFont uni14 Nerd Font Mono"
+#14px for me
+font-size = 10.5
 
 # font-family = "Terminess Nerd Font Mono"
 # font-size = 14
@@ -28,7 +28,6 @@ gtk-titlebar = true
 theme = "Everforest Dark Hard"
 #cursor-color = a7c080
 cursor-color = DDFFDD
-# background-opacity = 0.9
 background-opacity = 0.8
 unfocused-split-opacity = 1
 

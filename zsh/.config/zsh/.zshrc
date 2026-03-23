@@ -42,6 +42,8 @@ setopt HIST_REDUCE_BLANKS    # Remove wasted space
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
 
+eval "$(zoxide init zsh)"
+
 # MODULAR FILES
 [[ -f "$ZDOTDIR/aliases.zsh" ]] && source "$ZDOTDIR/aliases.zsh"
 [[ -f "$ZDOTDIR/prompt.zsh" ]] && source "$ZDOTDIR/prompt.zsh"
