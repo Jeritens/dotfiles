@@ -17,20 +17,27 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = {
-        {
-            "<leader>oc",
-            "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>",
-            desc = "Obsidian Check Checkbox",
-        },
-        { "<leader>oi", "<cmd>Obsidian template<CR>",     desc = "Insert Obsidian Template" },
-        { "<leader>ot", "<cmd>Obsidian today<CR>",        desc = "Obsidian Today" },
-        { "<leader>oy", "<cmd>Obsidian yesterday<CR>",    desc = "Obsidian Yesterday" },
-        { "<leader>om", "<cmd>Obsidian tomorrow<CR>",     desc = "Obsidian Tomorrow" },
         { "<leader>ob", "<cmd>Obsidian backlinks<CR>",    desc = "Show ObsidianBacklinks" },
         { "<leader>on", "<cmd>Obsidian new<CR>",          desc = "Create New Note" },
+        { "<leader>oc", "<cmd>Obsidian toc<CR>",      desc = "Table of Contents" },
+        { "<leader>ol", "<cmd>Obsidian links<CR>",      desc = "Links" },
+        -- search
         { "<leader>os", "<cmd>Obsidian search<CR>",       desc = "Search Obsidian" },
-        { "<leader>oo", "<cmd>Obsidian quick_switch<CR>", desc = "Quick Switch" },
         { "<leader>od", "<cmd>Obsidian dailies<CR>",      desc = "Quick Dailies" },
+        { "<leader>oa", "<cmd>Obsidian tags<CR>",      desc = "Obsidian Tags" },
+        { "<leader>oo", "<cmd>Obsidian quick_switch<CR>", desc = "Quick Switch" },
+        -- edit
+        { "<leader>or", "<cmd>Obsidian rename<CR>",      desc = "Rename" },
+        { "<leader>oi", "<cmd>Obsidian template<CR>",     desc = "Insert Template" },
+        -- { "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", desc = "Check Checkbox" },
+        { "<leader>op", "<cmd>Obsidian paste_img<CR>",      desc = "Paste Image" },
+        -- daily
+        { "<leader>ot", "<cmd>Obsidian today<CR>",        desc = "Today" },
+        { "<leader>om", "<cmd>Obsidian tomorrow<CR>",     desc = "Tomorrow" },
+        { "<leader>oy", "<cmd>Obsidian yesterday<CR>",    desc = "Yesterday" },
+        -- help
+        { "<leader>ohf", "<cmd>Obsidian help<CR>",      desc = "Help Files" },
+        { "<leader>ohg", "<cmd>Obsidian helpgrep<CR>",      desc = "Help Grep" },
     },
     ---@module 'obsidian'
     ---@type obsidian.config
@@ -55,7 +62,7 @@ return {
             -- Set to false to disable new note creation in the picker
             create_new = true,
         },
-        notes_subdir = "notes",
+        notes_subdir = "scratch",
         new_notes_location = "notes_subdir",
         daily_notes = {
             folder = "daily-notes",

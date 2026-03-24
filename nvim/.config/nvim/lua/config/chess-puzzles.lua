@@ -50,12 +50,12 @@ local DARK_SQUARE = "#b58863"
 local LIGHT_SQUARE = "#D3C6AA"
 
 local unicode_pieces = {
-    r = "󰡛 ",
-    n = "󰡘 ",
-    b = "󰡜 ",
-    q = "󰡚 ",
-    k = "󰡗 ",
-    p = "󰡙 ",
+    r = "󰡛",
+    n = "󰡘",
+    b = "󰡜",
+    q = "󰡚",
+    k = "󰡗",
+    p = "󰡙",
     -- r = "♖",
     -- n = "♘",
     -- b = "♗",
@@ -86,7 +86,7 @@ local function fenToSnackBoard(fen)
             for _ = 1, tonumber(char) do
                 table.insert(
                     board,
-                    { "  ", hl = ((rowNum + squareNum) % 2 == 0) and "LightSquareWhite" or "DarkSquareWhite" }
+                    { " ", hl = ((rowNum + squareNum) % 2 == 0) and "LightSquareWhite" or "DarkSquareWhite" }
                 )
                 squareNum = squareNum + 1
             end
