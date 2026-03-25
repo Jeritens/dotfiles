@@ -17,27 +17,31 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = {
-        { "<leader>ob", "<cmd>Obsidian backlinks<CR>",    desc = "Show ObsidianBacklinks" },
-        { "<leader>on", "<cmd>Obsidian new<CR>",          desc = "Create New Note" },
-        { "<leader>oc", "<cmd>Obsidian toc<CR>",      desc = "Table of Contents" },
-        { "<leader>ol", "<cmd>Obsidian links<CR>",      desc = "Links" },
+        { "<leader>ob",  "<cmd>Obsidian backlinks<CR>",    desc = "Show ObsidianBacklinks" },
+        { "<leader>on",  "<cmd>Obsidian new<CR>",          desc = "Create New Note" },
+        { "<leader>oc",  "<cmd>Obsidian toc<CR>",          desc = "Table of Contents" },
+        { "<leader>ol",  "<cmd>Obsidian links<CR>",        desc = "Show Links" },
+        -- visual mode
+        { "<leader>ol", "<cmd>Obsidian link<CR>",   mode="v",  desc = "Link" },
+        { "<leader>oe", "<cmd>Obsidian extract_note<CR>",   mode="v",  desc = "Extract into Note" },
+        { "<leader>on", "<cmd>Obsidian link_new<CR>",   mode="v",  desc = "Link New Note" },
         -- search
-        { "<leader>os", "<cmd>Obsidian search<CR>",       desc = "Search Obsidian" },
-        { "<leader>od", "<cmd>Obsidian dailies<CR>",      desc = "Quick Dailies" },
-        { "<leader>oa", "<cmd>Obsidian tags<CR>",      desc = "Obsidian Tags" },
-        { "<leader>oo", "<cmd>Obsidian quick_switch<CR>", desc = "Quick Switch" },
+        { "<leader>os",  "<cmd>Obsidian search<CR>",       desc = "Search Obsidian" },
+        { "<leader>od",  "<cmd>Obsidian dailies<CR>",      desc = "Quick Dailies" },
+        { "<leader>oa",  "<cmd>Obsidian tags<CR>",         desc = "Obsidian Tags" },
+        { "<leader>oo",  "<cmd>Obsidian quick_switch<CR>", desc = "Quick Switch" },
         -- edit
-        { "<leader>or", "<cmd>Obsidian rename<CR>",      desc = "Rename" },
-        { "<leader>oi", "<cmd>Obsidian template<CR>",     desc = "Insert Template" },
+        { "<leader>or",  "<cmd>Obsidian rename<CR>",       desc = "Rename" },
+        { "<leader>op",  "<cmd>Obsidian template<CR>",     desc = "Insert Template" },
+        { "<leader>oi",  "<cmd>Obsidian paste_img<CR>",    desc = "Paste Image" },
         -- { "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", desc = "Check Checkbox" },
-        { "<leader>op", "<cmd>Obsidian paste_img<CR>",      desc = "Paste Image" },
         -- daily
-        { "<leader>ot", "<cmd>Obsidian today<CR>",        desc = "Today" },
-        { "<leader>om", "<cmd>Obsidian tomorrow<CR>",     desc = "Tomorrow" },
-        { "<leader>oy", "<cmd>Obsidian yesterday<CR>",    desc = "Yesterday" },
+        { "<leader>ot",  "<cmd>Obsidian today<CR>",        desc = "Today" },
+        { "<leader>om",  "<cmd>Obsidian tomorrow<CR>",     desc = "Tomorrow" },
+        { "<leader>oy",  "<cmd>Obsidian yesterday<CR>",    desc = "Yesterday" },
         -- help
-        { "<leader>ohf", "<cmd>Obsidian help<CR>",      desc = "Help Files" },
-        { "<leader>ohg", "<cmd>Obsidian helpgrep<CR>",      desc = "Help Grep" },
+        { "<leader>ohf", "<cmd>Obsidian help<CR>",         desc = "Help Files" },
+        { "<leader>ohg", "<cmd>Obsidian helpgrep<CR>",     desc = "Help Grep" },
     },
     ---@module 'obsidian'
     ---@type obsidian.config
@@ -48,7 +52,7 @@ return {
                 path = "~/obsidian-vault/",
             },
         },
-        fontmatter = {
+        frontmatter = {
             enable = false,
         },
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -70,7 +74,7 @@ return {
             template = "daily-notes-nvim.md",
         },
         templates = {
-            folder = "templates",
+            foler = "templates",
             date_format = "%Y-%m-%d",
             time_format = "%H:%M",
         },
