@@ -9,8 +9,8 @@
 # font-feature = zero, -calt, -liga, -dlig
 
 font-family = "GohuFont uni14 Nerd Font Mono"
-#14px for me
 font-size = 10.5
+#14px for me
 
 # font-family = "Terminess Nerd Font Mono"
 # font-size = 14

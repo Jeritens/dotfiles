@@ -5,3 +5,4 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- Optional: Start with everything unfolded 
 -- So you don't open a file and see only one line
 vim.wo.foldlevel = 99
+

@@ -8,6 +8,7 @@ return {
 			transparent_background_level = 0,
 			italics = true,
 			disable_italic_comment = false,
+            ui_contrast = "high",
 		},
 		config = function(_, opts)
 			require("everforest").setup(opts)
