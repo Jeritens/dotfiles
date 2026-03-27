@@ -37,7 +37,8 @@ return {
 							desc = "Config",
 							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 						},
-						{ icon = "", key = "o", desc = "Daily Notes", action = ":Obsidian today" },
+						{ icon = "", key = "d", desc = "Daily Notes", action = ":Obsidian today" },
+						{ icon = "", key = "o", desc = "Obsidian Notes", action = ":edit ~/obsidian-vault/mocs/root.md"},
 						{
 							icon = "󰒲 ",
 							key = "L",

@@ -10,8 +10,6 @@ return {
 		},
 		spec = {
 			{ "<leader>f", group = "File" },
-			{ "<leader>o", group = "Obsidian" },
-			{ "<leader>oh", group = "Obsidian Help" },
 			{ "<leader>b", group = "Buffer" },
 			{ "<leader>c", group = "Code" },
 			{ "<leader>s", group = "Search" },

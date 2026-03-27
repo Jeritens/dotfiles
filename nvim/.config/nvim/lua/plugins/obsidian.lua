@@ -1,4 +1,5 @@
 return {
+
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = false,
@@ -17,31 +18,66 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = {
-        { "<leader>ob",  "<cmd>Obsidian backlinks<CR>",    desc = "Show ObsidianBacklinks" },
-        { "<leader>on",  "<cmd>Obsidian new<CR>",          desc = "Create New Note" },
-        { "<leader>oc",  "<cmd>Obsidian toc<CR>",          desc = "Table of Contents" },
-        { "<leader>ol",  "<cmd>Obsidian links<CR>",        desc = "Show Links" },
+        --new
+        { "<leader>onn", "<cmd>Obsidian new<CR>",       desc = "New Note" },
+        {
+            "<leader>ons",
+            function()
+                local title = vim.fn.input("Sctatch Title: ")
+                vim.cmd("Obsidian new scratch/" .. title)
+            end,
+            desc = "New Scratch"
+        },
+        {
+            "<leader>onp",
+            function()
+                local title = vim.fn.input("Person: ")
+                vim.cmd("Obsidian new_from_template people/" .. title .. " person-template.md")
+            end,
+            desc = "New Person"
+        },
+        { "<leader>ont", "<cmd>Obsidian new_from_template<CR>",                     desc = "New from Template" },
+        {
+            "<leader>onm",
+            function()
+                local title = vim.fn.input("MoC: ")
+                vim.cmd("Obsidian new mocs/" .. title)
+            end,
+            desc = "New MoC"
+        },
+        {
+            "<leader>ond",
+            function()
+                local title = vim.fn.input("Dream: ")
+                vim.cmd("Obsidian new_from_template dream-journal/" .. title .. " dream-template.md")
+            end,
+            desc = "New Dream"
+        },
+        --show
+        { "<leader>ob",  "<cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
+        { "<leader>oc",  "<cmd>Obsidian toc<CR>",                                   desc = "Table of Contents" },
+        { "<leader>ol",  "<cmd>Obsidian links<CR>",                                 desc = "Links" },
         -- visual mode
-        { "<leader>ol", "<cmd>Obsidian link<CR>",   mode="v",  desc = "Link" },
-        { "<leader>oe", "<cmd>Obsidian extract_note<CR>",   mode="v",  desc = "Extract into Note" },
-        { "<leader>on", "<cmd>Obsidian link_new<CR>",   mode="v",  desc = "Link New Note" },
+        { "<leader>ol",  "<cmd>Obsidian link<CR>",                                  mode = "v",                desc = "Link" },
+        { "<leader>oe",  ":Obsidian extract_note<CR>",                              mode = "x",                desc = "Extract" },
+        { "<leader>on",  "<cmd>Obsidian link_new<CR>",                              mode = "v",                desc = "Link New Note" },
         -- search
-        { "<leader>os",  "<cmd>Obsidian search<CR>",       desc = "Search Obsidian" },
-        { "<leader>od",  "<cmd>Obsidian dailies<CR>",      desc = "Quick Dailies" },
-        { "<leader>oa",  "<cmd>Obsidian tags<CR>",         desc = "Obsidian Tags" },
-        { "<leader>oo",  "<cmd>Obsidian quick_switch<CR>", desc = "Quick Switch" },
+        { "<leader>os",  "<cmd>Obsidian search<CR>",                                desc = "Search Obsidian" },
+        { "<leader>ot",  "<cmd>Obsidian tags<CR>",                                  desc = "Obsidian Tags" },
+        { "<leader>oo",  "<cmd>Obsidian quick_switch<CR>",                          desc = "Quick Switch" },
         -- edit
-        { "<leader>or",  "<cmd>Obsidian rename<CR>",       desc = "Rename" },
-        { "<leader>op",  "<cmd>Obsidian template<CR>",     desc = "Insert Template" },
-        { "<leader>oi",  "<cmd>Obsidian paste_img<CR>",    desc = "Paste Image" },
-        -- { "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", desc = "Check Checkbox" },
+        { "<leader>or",  "<cmd>Obsidian rename<CR>",                                desc = "Rename" },
+        { "<leader>op",  "<cmd>Obsidian template<CR>",                              desc = "Template" },
+        { "<leader>oi",  "<cmd>Obsidian paste_img<CR>",                             desc = "Paste Image" },
+        { "<leader>ox",  "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", desc = "Check Checkbox" },
         -- daily
-        { "<leader>ot",  "<cmd>Obsidian today<CR>",        desc = "Today" },
-        { "<leader>om",  "<cmd>Obsidian tomorrow<CR>",     desc = "Tomorrow" },
-        { "<leader>oy",  "<cmd>Obsidian yesterday<CR>",    desc = "Yesterday" },
+        { "<leader>ods", "<cmd>Obsidian dailies<CR>",                               desc = "Dailies" },
+        { "<leader>odd", "<cmd>Obsidian today<CR>",                                 desc = "Today" },
+        { "<leader>odt", "<cmd>Obsidian tomorrow<CR>",                              desc = "Tomorrow" },
+        { "<leader>ody", "<cmd>Obsidian yesterday<CR>",                             desc = "Yesterday" },
         -- help
-        { "<leader>ohf", "<cmd>Obsidian help<CR>",         desc = "Help Files" },
-        { "<leader>ohg", "<cmd>Obsidian helpgrep<CR>",     desc = "Help Grep" },
+        { "<leader>ohf", "<cmd>Obsidian help<CR>",                                  desc = "Help Files" },
+        { "<leader>ohg", "<cmd>Obsidian helpgrep<CR>",                              desc = "Help Grep" },
     },
     ---@module 'obsidian'
     ---@type obsidian.config
@@ -53,7 +89,7 @@ return {
             },
         },
         frontmatter = {
-            enable = false,
+            enable = true,
         },
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
         completion = {
@@ -66,17 +102,32 @@ return {
             -- Set to false to disable new note creation in the picker
             create_new = true,
         },
-        notes_subdir = "scratch",
+        notes_subdir = "notes",
         new_notes_location = "notes_subdir",
+        note = {
+            template = "default.md",
+        },
+        templates = {
+            folder = "templates",
+            date_format = "%Y-%m-%d",
+            time_format = "%H:%M",
+            customizations = {
+                ["dream-template"] = {
+                    notes_subdir = "dream-journal",
+                    note_id_func = function(title)
+                        if title ~= nil then
+                            return os.date("%Y-%m-%d") .. "-" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+                        end
+                        return "new-dream" .. "-" .. os.date("%Y-%m-%d-%H%M%S")
+                    end
+                },
+            },
+        },
         daily_notes = {
             folder = "daily-notes",
             date_format = "%Y-%m-%d",
             template = "daily-notes-nvim.md",
-        },
-        templates = {
-            foler = "templates",
-            date_format = "%Y-%m-%d",
-            time_format = "%H:%M",
+            workdays_only = false,
         },
         picker = {
             -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
@@ -105,7 +156,7 @@ return {
             if title ~= nil then
                 return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
             end
-            return "new-note" .. "-" .. tostring(os.time())
+            return "new-note" .. "-" .. os.date("%Y-%m-%d-%H%M%S")
         end,
         checkbox = {
             order = { " ", "x", "-", "!", "?" },
@@ -114,4 +165,15 @@ return {
             enabled = false,
         },
     },
+    config = function(_, opts)
+        require("obsidian").setup(opts)
+        local wk = require("which-key")
+        wk.add({
+			{ "<leader>o", group = "Obsidian" },
+			{ "<leader>on", group = "New" },
+			{ "<leader>od", group = "Daily" },
+			{ "<leader>o", mode="v", group = "Obsidian" },
+			{ "<leader>oh", group = "Help" },
+        })
+    end
 }
