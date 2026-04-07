@@ -5,7 +5,7 @@
 
 ## nvim
 
-my editor of choice
+my editor of choice  
 quit with `:q!`
 
 
@@ -19,7 +19,7 @@ plugin dependencies:
 - zsh-history-substring-search  
 
 ## ghostty
-- font, coloscheme, shader
+- font, colorscheme, shader
 
 ## niri
 - scrolling window manager
@@ -28,7 +28,7 @@ plugin dependencies:
 - keymaps based on {h,j,k,l}
 - mod + {direction}  = focus
 - mod + shift + {direction} = move
-- mod + ctrl + {direction} = sizing
+- mod + ctrl + {direction} = windowsizing
 - mod + alt + (shift +) {direction} = focus/(move to) monitor
 
 
