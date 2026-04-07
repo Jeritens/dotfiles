@@ -1,6 +1,7 @@
 {
   "blink.cmp": { "branch": "main", "commit": "451168851e8e2466bc97ee3e026c3dcb9141ce07" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "everforest-nvim": { "branch": "main", "commit": "323e7633034a8068636a11597cec03bca5465c50" },
   "godot-lsp.nvim": { "branch": "main", "commit": "4a29e680a6c21ff7b6f1c45f686d1cceb1420828" },
   "grug-far.nvim": { "branch": "main", "commit": "dc4684e163971bb1f5bfb93fbd4bb3e892bf9b15" },
