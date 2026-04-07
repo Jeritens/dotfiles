@@ -9,8 +9,8 @@ alias ls='ls -a --color=auto'
 # alias ll='ls -a --color=auto'
 alias ll='ls' 
 alias l='ls -lah --color=auto'
-alias cat='bat'           # Requires 'bat' package
-alias grep='rg'           # Requires 'ripgrep' package
+# alias cat='bat'           # Requires 'bat' package
+# alias grep='rg'           # Requires 'ripgrep' package
 
 # CachyOS / Arch Specifics
 # alias update='sudo cachyos-rate-mirrors && local-yay' # Example update command
