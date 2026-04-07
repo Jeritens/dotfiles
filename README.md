@@ -5,7 +5,7 @@
 
 ## nvim
 
-my editor of choice
+my editor of choice  
 quit with `:q!`
 
 
