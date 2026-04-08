@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
+vim.o.ttimeout = true
 opt.ttimeoutlen = 0
 
 opt.clipboard = "unnamedplus"
