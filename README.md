@@ -6,8 +6,7 @@
 ## nvim
 
 my editor of choice  
-quit with `:q!`
-
+quit with `:q!` :)
 
 ## zsh
 
@@ -18,13 +17,25 @@ plugin dependencies:
 - zsh-syntax-highlighting
 - zsh-history-substring-search  
 
+## tmux
+
+hotkeys and status bar styling 
+
 ## ghostty
+
 - font, colorscheme, shader
 
+## kanata
+
+- ergonomic symbol layer
+- home row mods
+
 ## niri
+
 - scrolling window manager
 
 ### keymaps basics
+
 - keymaps based on {h,j,k,l}
 - mod + {direction}  = focus
 - mod + shift + {direction} = move
@@ -32,6 +43,3 @@ plugin dependencies:
 - mod + alt + (shift +) {direction} = focus/(move to) monitor
 
 
-## kanata
-- ergonomic symbol layer
-- home row mods

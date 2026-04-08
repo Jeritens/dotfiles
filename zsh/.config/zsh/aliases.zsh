@@ -29,3 +29,6 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+alias wetter='curl wttr.in'
+alias cheat='curl cht.sh'
