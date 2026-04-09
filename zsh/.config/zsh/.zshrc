@@ -19,6 +19,25 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 # main opts
 bindkey -v
 
+# Cursor shapes
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    print -n "\e[2 q"  # block cursor in normal mode
+  else
+    print -n "\e[6 q"  # line cursor in insert mode
+  fi
+}
+zle -N zle-keymap-select
+
+function zle-line-init {
+  if [[ $KEYMAP == vicmd ]]; then
+    print -n "\e[2 q"
+  else
+    print -n "\e[6 q"
+  fi
+}
+zle -N zle-line-init
+
 setopt append_history inc_append_history share_history # better history
 # on exit, history appends rather than overwrites; history is appended as soon as cmds executed; history shared across sessions
 setopt auto_menu menu_complete # autocmp first menu match

@@ -19,7 +19,7 @@ plugin dependencies:
 
 ## tmux
 
-hotkeys and status bar styling 
+keybinds and status bar styling 
 
 ## ghostty
 
