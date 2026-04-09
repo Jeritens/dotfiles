@@ -6,7 +6,9 @@ input {
         xkb {
             //If you want to overwrite your keyboard layout,
             // uncomment the line below and change the layout accordingly.
-            //layout "us" // Use the American keyboard layout
+            // layout "us" // Use the American keyboard layout
+            layout "eu"
+
         }
         numlock // Enable numlock on startup
     }
@@ -21,5 +23,5 @@ input {
     }
 
     // focus-follows-mouse // Automatically focus windows under the mouse pointer
-    workspace-auto-back-and-forth // Enable workspace back & forth switching
+    // workspace-auto-back-and-forth // Enable workspace back & forth switching
 }
