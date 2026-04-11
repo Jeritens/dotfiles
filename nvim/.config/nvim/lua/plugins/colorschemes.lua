@@ -20,8 +20,8 @@ return {
 
                 hl.RenderMarkdownH1Bg = { bg = palette.bg_green }
                 hl.RenderMarkdownH2Bg = { bg = palette.bg_yellow }
-                hl.RenderMarkdownH3Bg = { bg = palette.bg_red }
-                hl.RenderMarkdownH4Bg = { bg = palette.bg_visual }
+                hl.RenderMarkdownH3Bg = { bg = '#453d3a' }
+                hl.RenderMarkdownH4Bg = { bg = palette.bg_red }
                 hl.RenderMarkdownH5Bg = { bg = palette.bg_purple }
                 hl.RenderMarkdownH6Bg = { bg = palette.bg_blue }
 
