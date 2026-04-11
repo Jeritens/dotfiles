@@ -53,7 +53,6 @@ return {
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
-            -- Hier konfigurieren wir das Frontmatter (YAML)
             dash = {
                 enabled = true,
             },
@@ -61,16 +60,11 @@ return {
                 enabled = true,
             },
             custom_handlers = {},
-            win_options = {
-                conceallevel = {
-                    default = 2, -- Versteckt die Markdown-Syntaxsymbole
-                },
-            },
-            -- Spezifisch für das Frontmatter:
-            yaml = {
-                enabled = true,
-                appearance = 'compact', -- Zeigt nur ein kleines Icon statt des ganzen Blocks
-            },
+            -- heading = {
+            --     width = 'block',
+            --     left_pad = 2,
+            --     right_pad = 4,
+            -- },
         },
     }
 }

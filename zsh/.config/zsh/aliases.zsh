@@ -30,5 +30,5 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-alias wetter='curl wttr.in'
+alias wetter='curl wttr.in/berlin'
 alias cheat='curl cht.sh'
