@@ -1,0 +1,4 @@
+// todo for laptop
+output "eDP-1" {
+    mode "1920x1080@120.030"
+}
