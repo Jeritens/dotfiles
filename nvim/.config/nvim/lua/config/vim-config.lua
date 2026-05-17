@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 local opt = vim.opt
 
 vim.o.ttimeout = true
@@ -178,4 +179,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.formatoptions:remove({ "r", "o" })
   end,
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
 })

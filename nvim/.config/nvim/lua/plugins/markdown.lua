@@ -56,15 +56,13 @@ return {
             dash = {
                 enabled = true,
             },
-            header = {
+            heading = {
                 enabled = true,
-            },
-            custom_handlers = {},
-            -- heading = {
             --     width = 'block',
             --     left_pad = 2,
             --     right_pad = 4,
-            -- },
+            },
+            custom_handlers = {},
         },
     }
 }
