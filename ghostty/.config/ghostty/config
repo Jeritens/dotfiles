@@ -9,7 +9,6 @@
 # font-feature = zero, -calt, -liga, -dlig
 
 font-family = "GohuFont uni14 Nerd Font Mono"
-font-size = 10.5
 #14px for me
 
 # font-family = "Terminess Nerd Font Mono"
@@ -42,4 +41,6 @@ custom-shader = shaders/cursor_smear.glsl
 
 #setting
 window-save-state = always
+
+config-file=?host.config
 
