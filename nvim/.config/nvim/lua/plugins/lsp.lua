@@ -1,7 +1,8 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "mfussenegger/nvim-jdtls", },
+        -- dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "mfussenegger/nvim-jdtls", },
+        dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"},
         config = function()
             require("mason").setup()
             local lspconfig = require("lspconfig")
@@ -30,7 +31,7 @@ return {
                     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
                     vim.keymap.set('n', '<leader>cf', function()
                         vim.lsp.buf.format { async = true }
-                    end, opts)
+                    end, {buffer = ev.buf, desc = 'format'})
                     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
                     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
                     vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
