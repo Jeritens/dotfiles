@@ -32,3 +32,7 @@ function y() {
 
 alias wetter='curl wttr.in/berlin'
 alias cheat='curl cht.sh'
+
+alias speakers='pactl set-sink-port alsa_output.pci-0000_0a_00.4.analog-stereo analog-output-lineout'
+alias headphones='pactl set-sink-port alsa_output.pci-0000_0a_00.4.analog-stereo analog-output-headphones'
+alias piano='pw-loopback --capture-props="node.target=alsa_input.pci-0000_0a_00.4.analog-stereo" &'
